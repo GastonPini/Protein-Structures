@@ -1,0 +1,7 @@
+ESTRUCTURAS(Nombre, pH, ID_especie, Bd_fuentes, ID, Estado_de_Revisión, Tipo_de_Molécula, Subdatabases, Longitud_de_secuencia, Fecha_de_Creación, Descripción, Keywords, Organelas, Nombre_del_gen, Cross_references, Composición, Peso_molecular, Secuencia, Comentarios, Features)
+
+ESPECIES(ID, Nombre, Clasificación)
+
+AUTOR(ID, ID_T)
+
+TRABAJOS(ID_t,  ID_estructura, Nombre, ID_autor)

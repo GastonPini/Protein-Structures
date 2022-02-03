@@ -2,7 +2,7 @@
 
 ## Estructura:  
 
-Name: name of the structure.  
+Nombre: name of the structure.  
 pH: salt concentration at which the structure is functional.  
 ID_especie: identification of the species to which the structure corresponds.  
 Bd_fuentes: database where it comes from.  
@@ -17,7 +17,7 @@ Keywords: keys.
 Organelas: possible locations of the structure.  
 Nombre_del_gen: name of the gene that expresses the structure.  
 Cross_references:  
-Composition: set of elements that make up the structure.  
+Composición: set of elements that make up the structure.  
 Peso_molecular: weight of the structure.  
 Secuencia: order of nucleotides or AA that make up the structure.  
 Comentarios: additional information about the structure.  
@@ -39,4 +39,4 @@ ID_t: identification of the work in which the author has participated.
 ID_t: job number.  
 ID_estructura: identification of the structure that the job deals with.  
 Nombre: post title.  
-ID_autor: identification of the author who participated in the publication of the work.  
+ID_autor: identification of the author who participated in the publication of the work.

@@ -1,6 +1,11 @@
-# Entities:  
+# Protein Structures
 
-## Estructura:  
+System representation:  
+![diagrama](DER.jpg)
+
+## Entities:  
+
+### Estructura:  
 
 Nombre: name of the structure.  
 pH: salt concentration at which the structure is functional.  
@@ -23,20 +28,20 @@ Secuencia: order of nucleotides or AA that make up the structure.
 Comentarios: additional information about the structure.  
 Features: features.  
 
-## Especies:  
+### Especies:  
 
 Nombre: name of the species.  
 ID: identification of the species.  
 Clasificación: lineage where the species comes from.  
 
-## Author:  
+### Author:  
 
 ID: author identification.  
 ID_t: identification of the work in which the author has participated.  
 
-## Works:  
+### Works:  
 
 ID_t: job number.  
 ID_estructura: identification of the structure that the job deals with.  
 Nombre: post title.  
-ID_autor: identification of the author who participated in the publication of the work.
+ID_autor: identification of the author who participated in the publication of the work.  

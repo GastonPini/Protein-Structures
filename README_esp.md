@@ -1,38 +1,50 @@
-Entidades:
+# Estructuras de proteínas
 
-Estructura:
-Nombre: nombre de la estructura.
-pH: concentración salina a la que la estructura es funcional.
-ID_especie: identificación de la especie a la que corresponde la estructura.
-Bd_fuentes: base de datos de donde proviene. 
-ID: número de identificación.
-Estado_de_revisión: indica si la estructura fue o no revisada.
-Tipo_de_molécula: si es proteína o AN.
-Subdatabases: bases de datos adicionales de donde obtener información sobre la estructura.
-Longitud_de_secuencia: longitud de secuencia.
-Fecha_de_creación: fecha de ingreso de estructura a la base de datos.
-Descripción: información de la estructura.
-Keywords: clave.
-Organelas: posibles ubicaciones de la estructura.
-Nombre_del_gen: nombre del gen que expresa la estructura.
-Cross_references:
-Composition: conjunto de elementos que componen la estructura. NO
-Peso_molecular: peso de la estructura. NO
-Secuencia: orden de nucleótidos o AA que conforman la estructura. SI
-Comentarios: información adicional sobre la estructura. SI
-Features: características.
+Representación del sistema:  
+![diagrama](DER.jpg)
 
-Especies:
-Nombre: nombre de la especie.
-ID: identificación de la especie.
-Clasificación: linaje de donde proviene la especie.
+## Entidades:  
 
-Autor:
-ID: identificación del autor.
-ID_t: identificación del trabajo en el que el autor ha participado.
+### Estructura:  
 
-Trabajos:
-ID_t: número de trabajo.
-ID_estructura: identificación de la estructura de la que trata el trabajo.
-Nombre: título de la publicación.
-ID_autor: identificación del autor que participó en la publicación del trabajo.
+nombre: nombre de la estructura.
+ph: concentración salina a la que la estructura es funcional.
+id_especie: identificación de la especie a la que corresponde la estructura.
+bd_fuentes: base de datos de donde proviene. 
+id: número de identificación.
+estado_de_revision: indica si la estructura fue o no revisada.
+tipo_de_molecula: si es proteína o AN.
+subdatabases: bases de datos adicionales de donde obtener información sobre la estructura.
+longitud_de_secuencia: longitud de secuencia.
+fecha_de_creacion: fecha de ingreso de estructura a la base de datos.
+descripcion: información de la estructura.
+keywords: clave.
+organelas: posibles ubicaciones de la estructura.
+nombre_del_gen: nombre del gen que expresa la estructura.
+ross_references:
+composicion: conjunto de elementos que componen la estructura. NO
+peso_molecular: peso de la estructura. NO
+secuencia: orden de nucleótidos o AA que conforman la estructura. SI
+comentarios: información adicional sobre la estructura. SI
+features: características.
+
+
+### Especies:  
+
+nombre: nombre de la especie.
+id: identificación de la especie.
+clasificacion: linaje de donde proviene la especie.
+
+
+### Autor:  
+
+id: identificación del autor.
+id_t: identificación del trabajo en el que el autor ha participado.
+
+
+### Trabajos:  
+
+id_t: número de trabajo.
+id_estructura: identificación de la estructura de la que trata el trabajo.
+nombre: título de la publicación.
+id_autor: identificación del autor que participó en la publicación del trabajo.

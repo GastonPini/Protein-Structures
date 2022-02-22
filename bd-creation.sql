@@ -1,51 +1,51 @@
 CREATE TABLE ESTRUCTURAS(
-Nombre VARCHAR2(100),
-pH NUMBER(4,2),
-ID_especie NUMBER(7,0), 
-BD_fuente VARCHAR2(20),
-ID VARCHAR2(20) PRIMARY KEY,
-Estado_de_Revisión VARCHAR2(20),
-Tipo_de_Molécula VARCHAR2(20),
-Subdatabases VARCHAR2(50),
-Longitud_de_secuencia NUMBER(5,0),
-Fecha_de_Creación VARCHAR2(20),
+nombre VARCHAR2(100),
+ph NUMBER(4,2),
+id_especie NUMBER(7,0), 
+bd_fuente VARCHAR2(20),
+id VARCHAR2(20) PRIMARY KEY,
+estado_de_revision VARCHAR2(20),
+tipo_de_molecula VARCHAR2(20),
+subdatabases VARCHAR2(50),
+longitud_de_secuencia NUMBER(5,0),
+fecha_de_Creacion VARCHAR2(20),
 Descripción VARCHAR2(1000),
-Keywords VARCHAR2(20),
-Organelas VARCHAR2(200),
-Nombre_del_gen VARCHAR2(20),
-Cross_references VARCHAR2(250),
-Composición VARCHAR2(120),
-Peso_molecular VARCHAR2(15),
-Secuencia VARCHAR2(1000),
-Comentarios VARCHAR2(100),
-Features VARCHAR2(100)
+keywords VARCHAR2(20),
+organelas VARCHAR2(200),
+nombre_del_gen VARCHAR2(20),
+cross_references VARCHAR2(250),
+composición VARCHAR2(120),
+peso_molecular VARCHAR2(15),
+secuencia VARCHAR2(1000),
+comentarios VARCHAR2(100),
+features VARCHAR2(100)
 );
 
 CREATE TABLE ESPECIES(
-Nombre VARCHAR2(50),
-ID NUMBER(7,0) PRIMARY KEY,
-Clasificación VARCHAR2(300)
+nombre VARCHAR2(50),
+id NUMBER(7,0) PRIMARY KEY,
+clasificacion VARCHAR2(300)
 );
 
 CREATE TABLE AUTOR(
-ID VARCHAR2(20),
-ID_T NUMBER(8,0)
+id VARCHAR2(20),
+id_t NUMBER(8,0)
 );
 
 CREATE TABLE TRABAJOS(
-ID_T NUMBER(8,0),
-ID_estructura VARCHAR2(20),
-Nombre VARCHAR2(100),
-ID_autor VARCHAR2(20)
+id_t NUMBER(8,0),
+id_estructura VARCHAR2(20),
+nombre VARCHAR2(100),
+id_autor VARCHAR2(20)
 );
 
 ALTER TABLE ESTRUCTURAS
-ADD CONSTRAINT ID_fk FOREIGN KEY(ID_especie) REFERENCES ESPECIES(ID)
+ADD CONSTRAINT ID_fk FOREIGN KEY(id_especie) REFERENCES ESPECIES(id)
 
 
 ALTER TABLE AUTOR
-ADD CONSTRAINT autor_pk PRIMARY KEY(ID)
-ADD CONSTRAINT IDT_fk FOREIGN KEY(ID_t) REFERENCES TRABAJOS(ID_T);
+ADD CONSTRAINT autor_pk PRIMARY KEY(id)
+ADD CONSTRAINT IDT_fk FOREIGN KEY(id_t) REFERENCES TRABAJOS(id_t);
 
 ALTER TABLE TRABAJOS
-ADD CONSTRAINT ID_autor_fk FOREIGN KEY(ID_autor) REFERENCES AUTOR(ID)
+ADD CONSTRAINT ID_autor_fk FOREIGN KEY(id_autor) REFERENCES AUTOR(id);

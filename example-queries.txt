@@ -4,7 +4,7 @@ Ejemplo: ‘DROSOPHILA MELANOGASTER’
 
 SELECT EST.id, EST.nombre
 FROM especies ESP, estructuras EST
-WHERE EST.id_especie=ESP.id
+WHERE EST.id_especie = ESP.id
 AND UPPER(EST.tipo_de_molécula) = 'PROTEINA'
 AND UPPER(ESP.nombre) = 'DROSOPHILA MELANOGASTER'
 
@@ -12,10 +12,10 @@ AND UPPER(ESP.nombre) = 'DROSOPHILA MELANOGASTER'
 
 2. Mostrar el autor que posee mayor cantidad de trabajos en la literatura:
 
-SELECT ID_AUTOR
-FROM TRABAJOS T
-GROUP BY ID_AUTOR
-HAVING COUNT(ID_T)=(SELECT MAX(COUNT(ID_T)) FROM TRABAJOS GROUP BY ID_AUTOR)
+SELECT id_autor
+FROM trabajos T
+GROUP BY id_autor
+HAVING COUNT(id_t) = (SELECT MAX(COUNT(id_t)) FROM trabajos GROUP BY id_autor)
 
 ----------------------------------------------------------------------
 
@@ -23,35 +23,36 @@ HAVING COUNT(ID_T)=(SELECT MAX(COUNT(ID_T)) FROM TRABAJOS GROUP BY ID_AUTOR)
 
 SELECT DISTINCT TR.nombre, E.nombre, E.secuencia
 FROM trabajos TR, estructuras E
-WHERE E.ID=TR.ID_estructura
-and TR.ID_ESTRUCTURA IN (SELECT ID_ESTRUCTURA 
-from TRABAJOS TR
-GROUP BY TR.ID_ESTRUCTURA
-having count(TR.id_T) = (SELECT MAX(T.b) 
-                              FROM (SELECT COUNT(ID_T) as b
-                                    from TRABAJOS TR
-                                    GROUP BY TR.ID_ESTRUCTURA) T))
+WHERE E.id = TR.id_estructura
+AND TR.id_estructura IN (SELECT id_estructura 
+FROM trabajos TR
+GROUP BY TR.id_estructura
+HAVING COUNT(TR.id_t) = (SELECT MAX(T.b) 
+						FROM (SELECT COUNT(id_t) as b
+						FROM trabajos TR
+						GROUP BY TR.id_estructura) T))
 AND UPPER(E.tipo_de_molécula) = 'PROTEINA'
 
 ----------------------------------------------------------------------
 
 4. Mostrar la mostrar el nombre de la proteína con secuencia más larga, dentro de una especie.
 Ejemplo: 'DROSOPHILA MELANOGASTER'
-SELECT  E.nombre
+
+SELECT E.nombre
 FROM estructuras E, especies ESP
-WHERE UPPER(ESP.NOMBRE)='DROSOPHILA MELANOGASTER'
-AND E.id_especie = ESP.ID
-AND E.longitud_de_secuencia = (SELECT MAX(longitud_de_secuencia) FROM ESTRUCTURAS)
+WHERE UPPER(ESP.nombre) = 'DROSOPHILA MELANOGASTER'
+AND E.id_especie = ESP.id
+AND E.longitud_de_secuencia = (SELECT MAX(longitud_de_secuencia) FROM estructuras)
 AND UPPER(E.tipo_de_molécula) = 'PROTEINA'
 
 ----------------------------------------------------------------------
 
 5. Mostrar las características de la proteína con la secuencia más corta.
 
-SELECT  E.nombre
+SELECT E.nombre
 FROM estructuras E
 WHERE UPPER(E.tipo_de_molécula) = 'PROTEINA'
-AND E.longitud_de_secuencia = (SELECT MIN(longitud_de_secuencia) FROM ESTRUCTURAS)
+AND E.longitud_de_secuencia = (SELECT MIN(longitud_de_secuencia) FROM estructuras)
 
 ----------------------------------------------------------------------
 
@@ -59,21 +60,21 @@ AND E.longitud_de_secuencia = (SELECT MIN(longitud_de_secuencia) FROM ESTRUCTURA
 
 SELECT ESP.id, ESP.clasificación, E.nombre, E.secuencia
 FROM especies ESP, estructuras E
-WHERE ESP.ID=E.ID_ESPECIE
-and E.id_especie IN (SELECT id_especie 
-from estructuras E
+WHERE ESP.id = E.id_especie
+AND E.id_especie IN (SELECT id_especie 
+FROM estructuras E
 GROUP BY E.id_especie 
-having count(E.id_especie) = (SELECT MAX(T.b) 
-                              FROM (SELECT COUNT(id_especie) as b
-                                    from estructuras E
-                                    GROUP BY E.id_especie) T))
+HAVING COUNT(E.id_especie) = (SELECT MAX(T.b) 
+								FROM (SELECT COUNT(id_especie) AS b
+								FROM estructuras E
+								GROUP BY E.id_especie) T))
 AND UPPER(E.tipo_de_molécula) = 'PROTEINA'
 
 ----------------------------------------------------------------------
 
 7. Mostrar las proteínas que poseen un PH (propiedad de la proteína) mayor al PH promedio de todas las proteínas.
 
-SELECT NOMBRE, pH
+SELECT nombre, ph
 FROM estructuras
 WHERE UPPER(tipo_de_molécula) = 'PROTEINA'
-AND pH >= (SELECT AVG(pH) FROM ESTRUCTURAS)
+AND ph >= (SELECT AVG(ph) FROM estructuras)

@@ -1,7 +1,7 @@
-ESTRUCTURAS(Nombre, pH, ID_especie, Bd_fuentes, ID, Estado_de_Revisión, Tipo_de_Molécula, Subdatabases, Longitud_de_secuencia, Fecha_de_Creación, Descripción, Keywords, Organelas, Nombre_del_gen, Cross_references, Composición, Peso_molecular, Secuencia, Comentarios, Features)
+ESTRUCTURAS(nombre, ph, id_especie, bd_fuente, id, estado_de_revision, tipo_de_molecula, subdatabases, longitud_de_secuencia, fecha_de_creacion, descripcion, keywords, organelas, nombre_del_gen, cross_references, composicion, peso_molecular, secuencia, comentarios, features)
 
-ESPECIES(ID, Nombre, Clasificación)
+ESPECIES(id, nombre, clasificacion)
 
-AUTOR(ID, ID_T)
+AUTOR(id, id_t)
 
-TRABAJOS(ID_t,  ID_estructura, Nombre, ID_autor)
+TRABAJOS(id_t, id_estructura, nombre, id_autor)

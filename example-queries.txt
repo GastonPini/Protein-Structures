@@ -5,21 +5,12 @@ Ejemplo: ‘DROSOPHILA MELANOGASTER’
 SELECT EST.id, EST.nombre
 FROM especies ESP, estructuras EST
 WHERE EST.id_especie = ESP.id
-AND UPPER(EST.tipo_de_molécula) = 'PROTEINA'
+AND UPPER(EST.tipo_de_molecula) = 'PROTEINA'
 AND UPPER(ESP.nombre) = 'DROSOPHILA MELANOGASTER'
 
 ----------------------------------------------------------------------
 
-2. Mostrar el autor que posee mayor cantidad de trabajos en la literatura:
-
-SELECT id_autor
-FROM trabajos T
-GROUP BY id_autor
-HAVING COUNT(id_t) = (SELECT MAX(COUNT(id_t)) FROM trabajos GROUP BY id_autor)
-
-----------------------------------------------------------------------
-
-3. Mostrar los trabajos en la literatura de la proteína más referenciada, su nombre y su secuencia:
+2. Mostrar los trabajos en la literatura de la proteína más referenciada, su nombre y su secuencia:
 
 SELECT DISTINCT TR.nombre, E.nombre, E.secuencia
 FROM trabajos TR, estructuras E
@@ -31,11 +22,11 @@ HAVING COUNT(TR.id_t) = (SELECT MAX(T.b)
 						FROM (SELECT COUNT(id_t) as b
 						FROM trabajos TR
 						GROUP BY TR.id_estructura) T))
-AND UPPER(E.tipo_de_molécula) = 'PROTEINA'
+AND UPPER(E.tipo_de_molecula) = 'PROTEINA'
 
 ----------------------------------------------------------------------
 
-4. Mostrar la mostrar el nombre de la proteína con secuencia más larga, dentro de una especie.
+3. Mostrar la mostrar el nombre de la proteína con secuencia más larga, dentro de una especie.
 Ejemplo: 'DROSOPHILA MELANOGASTER'
 
 SELECT E.nombre
@@ -43,22 +34,22 @@ FROM estructuras E, especies ESP
 WHERE UPPER(ESP.nombre) = 'DROSOPHILA MELANOGASTER'
 AND E.id_especie = ESP.id
 AND E.longitud_de_secuencia = (SELECT MAX(longitud_de_secuencia) FROM estructuras)
-AND UPPER(E.tipo_de_molécula) = 'PROTEINA'
+AND UPPER(E.tipo_de_molecula) = 'PROTEINA'
 
 ----------------------------------------------------------------------
 
-5. Mostrar las características de la proteína con la secuencia más corta.
+4. Mostrar las características de la proteína con la secuencia más corta.
 
 SELECT E.nombre
 FROM estructuras E
-WHERE UPPER(E.tipo_de_molécula) = 'PROTEINA'
+WHERE UPPER(E.tipo_de_molecula) = 'PROTEINA'
 AND E.longitud_de_secuencia = (SELECT MIN(longitud_de_secuencia) FROM estructuras)
 
 ----------------------------------------------------------------------
 
-6. Mostrar los datos de la especie, las proteínas que posee y sus secuencias de aquella especie que posee la mayor cantidad de proteínas.
+5. Mostrar los datos de la especie, las proteínas que posee y sus secuencias de aquella especie que posee la mayor cantidad de proteínas.
 
-SELECT ESP.id, ESP.clasificación, E.nombre, E.secuencia
+SELECT ESP.id, ESP.clasificacion, E.nombre, E.secuencia
 FROM especies ESP, estructuras E
 WHERE ESP.id = E.id_especie
 AND E.id_especie IN (SELECT id_especie 
@@ -68,13 +59,13 @@ HAVING COUNT(E.id_especie) = (SELECT MAX(T.b)
 								FROM (SELECT COUNT(id_especie) AS b
 								FROM estructuras E
 								GROUP BY E.id_especie) T))
-AND UPPER(E.tipo_de_molécula) = 'PROTEINA'
+AND UPPER(E.tipo_de_molecula) = 'PROTEINA'
 
 ----------------------------------------------------------------------
 
-7. Mostrar las proteínas que poseen un PH (propiedad de la proteína) mayor al PH promedio de todas las proteínas.
+6. Mostrar las proteínas que poseen un PH (propiedad de la proteína) mayor al PH promedio de todas las proteínas.
 
 SELECT nombre, ph
 FROM estructuras
-WHERE UPPER(tipo_de_molécula) = 'PROTEINA'
+WHERE UPPER(tipo_de_molecula) = 'PROTEINA'
 AND ph >= (SELECT AVG(ph) FROM estructuras)
